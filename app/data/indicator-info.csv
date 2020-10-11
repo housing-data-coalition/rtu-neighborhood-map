@@ -1,0 +1,34 @@
+order,var_group,var_name,display_name,val_fmt
+0,Totals (2014-18),occ_units,"Total Units",num
+1,Totals (2014-18),pop_num,"Total Population",num
+2,Renters (2014-18),occ_renter_units,"Renter Units",num
+3,Renters (2014-18),renter_pct,"Renter % of Units",pct
+4,Renters (2014-18),occ_renter_pop,"Renter Population",num
+5,Renters (2014-18),renter_hh_inc_med,"Median Renter Household Income",cur
+6,Renters (2014-18),renter_fam_pov_pct,"Renter Poverty Rate",pct
+7,Renters (2014-18),gross_rent_med,"Median Gross Rent",cur
+8,Renters (2014-18),rent_burden_30p_pct,"Rent/Income Ratio 30%+",pct
+9,Renters (2014-18),rent_burden_50p_pct,"Rent/Income Ratio 50%+",pct
+10,Renters (2014-18),renter_white_pct,"Renter % White",pct
+11,Renters (2014-18),renter_black_pct,"Renter % Black",pct
+12,Renters (2014-18),renter_asian_pct,"Renter % Asian",pct
+13,Renters (2014-18),renter_latin_pct,"Renter % Latino",pct
+14,Renters (2014-18),unit_occ_rent_child_pct,"Renter % with Children",pct
+15,HPD Complaints (2019),comp_nonemerg_num,"Non-Emergency Number",num
+16,HPD Complaints (2019),comp_nonemerg_rt,"Non-Emergency Rate",rt
+17,HPD Complaints (2019),comp_emerg_num,"Emergency Number",num
+18,HPD Complaints (2019),comp_emerg_rt,"Emergency Rate",rt
+19,HPD Complaints (2019),comp_immed_num,"Immediate Emergency Number",num
+20,HPD Complaints (2019),comp_immed_rt,"Immediate Emergency Rate",rt
+21,HPD Complaints (2019),comp_haz_num,"Hazardous Number",num
+22,HPD Complaints (2019),comp_haz_rt,"Hazardous Rate",rt
+23,HPD Violations (2019),viol_a_num,"Non-Hazardous Number",num
+24,HPD Violations (2019),viol_a_rt,"Non-Hazardous Rate",rt
+25,HPD Violations (2019),viol_b_num,"Hazardous Number",num
+26,HPD Violations (2019),viol_b_rt,"Hazardous Rate",rt
+27,HPD Violations (2019),viol_c_num,"Immediately Hazardous Number",num
+28,HPD Violations (2019),viol_c_rt,"Immediately Hazardous Rate",rt
+29,Deregulated Units (2007-18),dereg_units,"Deregulated Units Number",num
+30,Deregulated Units (2007-18),dereg_pct,"Deregulated Units Percent",pct
+31,Marshall Evictions (2019),marsh_evic_num,"Marshall Eviction Number",num
+32,Marshall Evictions (2019),marsh_evic_rt,"Marshall Eviction Rate",rt
