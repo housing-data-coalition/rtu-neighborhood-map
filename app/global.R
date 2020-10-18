@@ -6,6 +6,7 @@ library(tidyr)
 library(readr)
 library(sf)
 library(leaflet)
+library(leafpop)
 library(leaflet.mapboxgl) # remotes::install_github("rstudio/leaflet.mapboxgl")
 library(gt)
 

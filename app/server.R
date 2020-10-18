@@ -140,13 +140,21 @@ server <- function(input, output, session) {
   })
   
   observeEvent(credentials()$user_auth, {
+    
+    
+    popup <- popupTable(
+      members(), 
+      c("name", "pronouns", "phone", "email", "address"), 
+      row.numbers = FALSE, 
+      feature.id = FALSE
+    )
+    
     # add member locations
     leafletProxy("map") %>%
       addCircleMarkers(
         data = members(),
         label = ~name,
-        popup = TRUE,
-        # popupOptions = popup_options,
+        popup = popup,
         fillColor = "blck",
         fillOpacity = 1,
         stroke = FALSE,
