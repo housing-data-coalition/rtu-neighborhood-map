@@ -7,6 +7,7 @@ library(tidycensus) # census API
 library(sf) # spatial data manipulation
 
 # Edit ".env_sample" to set variables and save as ".env"
+load_dot_env(".env")
 
 # Free API can be requested here: http://api.census.gov/data/key_signup.html
 census_api_key(Sys.getenv("ACS_API_KEY"))
@@ -20,10 +21,6 @@ con <- dbConnect(
   port = Sys.getenv("HDC_NYCDB_PORT"),
   dbname = Sys.getenv("HDC_NYCDB_DBNAME")
 )
-
-# Save Mapbox token for shiny app 
-# Free to sign up for API key here: https://account.mapbox.com/auth/signup/
-saveRDS(Sys.getenv("MAPBOX_TOKEN"), path("app", "data", "mapbox_token.rds"))
 
 
 # Get list of tracts to include in the map

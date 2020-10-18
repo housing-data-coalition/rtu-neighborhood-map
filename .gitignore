@@ -7,3 +7,6 @@
 .DS_Store
 rsconnect/
 mapbox_token.rds
+members.rds
+manual_geocode_results.csv
+user_base.rds

@@ -1,4 +1,6 @@
 library(shiny)
+library(shinyjs)
+library(shinyauthr) # remotes::install_github("paulc91/shinyauthr")
 library(dplyr)
 library(tidyr)
 library(readr)
@@ -6,6 +8,9 @@ library(sf)
 library(leaflet)
 library(leaflet.mapboxgl) # remotes::install_github("rstudio/leaflet.mapboxgl")
 library(gt)
+
+# Encrypted user base for login screen
+user_base <- readRDS("data/user_base.rds")
 
 # Set API token for MapboxGL basemap
 options(mapbox.accessToken = read_rds("data/mapbox_token.rds"))
@@ -25,3 +30,6 @@ var_inputs <- indic_info %>%
     var_name
   ) %>% 
   {setNames(.$var_name, .$label)}
+
+# NOTE: we don't load the member data here, but rather in server.R, because we
+# need to wait until login authorization is complete.

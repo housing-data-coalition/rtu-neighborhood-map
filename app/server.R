@@ -1,4 +1,50 @@
 server <- function(input, output, session) {
+
+  # Login -------------------------------------------------------------------
+
+  
+  # Call login module supplying data frame, user and password cols
+  # and reactive trigger
+  credentials <- callModule(
+    shinyauthr::login, 
+    id = "login", 
+    data = user_base,
+    user_col = user,
+    pwd_col = password,
+    sodium_hashed = TRUE,
+    log_out = reactive(logout_init())
+  )
+    
+  # Call the logout module with reactive trigger to hide/show
+  logout_init <- callModule(
+    shinyauthr::logout, 
+    id = "logout", 
+    active = reactive(credentials()$user_auth)
+  )
+  
+  # Launch login screen when login button clicked
+  observeEvent(input$"open-login", {
+    showModal(modalDialog(
+      loginUI(id = "login"),
+      easyClose = TRUE
+    ))
+  })
+  
+  # If logged-in, hide the login button
+  observe({
+    shinyjs::hide("open-login")
+    
+    if(!credentials()$user_auth)
+      shinyjs::show("open-login")
+  })
+
+  # AFter successful login, close login screen
+  observeEvent(credentials()$user_auth, {
+    removeModal()
+  })
+
+  # Map ---------------------------------------------------------------------
+
   
   # Create default map to start with on the app
   output$map <- renderLeaflet({
@@ -83,6 +129,42 @@ server <- function(input, output, session) {
         layerId = "selected"
       )
   })
+  
+
+  # Members -----------------------------------------------------------------
+  
+  # Only after successful login, load data and show member locations
+  
+  members <- eventReactive(credentials()$user_auth, {
+    readRDS("data/members.rds")
+  })
+  
+  observeEvent(credentials()$user_auth, {
+    # add member locations
+    leafletProxy("map") %>%
+      addCircleMarkers(
+        data = members(),
+        label = ~name,
+        popup = TRUE,
+        # popupOptions = popup_options,
+        fillColor = "blck",
+        fillOpacity = 1,
+        stroke = FALSE,
+        radius = 3,
+        layerId = ~uid,
+        group = "members"
+      )
+  })
+  
+  observe({
+    req(!credentials()$user_auth)
+    # remove member locations on logout
+    leafletProxy("map") %>%
+      clearMarkers()
+  })
+  
+
+  # Table -------------------------------------------------------------------
   
   tract_info <- eventReactive(input$map_shape_click, {
     event <- input$map_shape_click

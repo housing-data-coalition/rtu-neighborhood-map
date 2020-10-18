@@ -12,7 +12,27 @@ ui <- fluidPage(
     }
     "
   ),
-  img(src='logo.png', align = "right", height="70"),
+  
+  # Logo --------------------------------------------------------------------
+  
+  div(class = "pull-right",
+      img(src='logo.png', align = "right", height="70")
+  ),
+  
+  # Login -------------------------------------------------------------------
+  
+  # must turn shinyjs on
+  shinyjs::useShinyjs(),
+  
+  # add logout button 
+  div(class = "pull-right", style = "padding: 10px",logoutUI(id = "logout")),
+  
+  # add login button
+  div(class = "pull-right", style = "padding: 10px", actionButton("open-login", "Login")),
+  
+  # Map & Table -------------------------------------------------------------
+  
+  # Variable selection
   selectInput(
     "variable", 
     "Variable:", 
@@ -20,6 +40,8 @@ ui <- fluidPage(
     selected = var_inputs[[1]], 
     width = "calc(100% - 400px + 10px)"
   ),
+  
   leafletOutput("map", width = "100%", height = "650px"),
-  uiOutput("sidebar")
+  
+  uiOutput("sidebar"),
 )
