@@ -153,8 +153,8 @@ server <- function(input, output, session) {
     leafletProxy("map") %>%
       addCircleMarkers(
         data = members(),
-        label = ~name,
-        popup = popup,
+        # label = ~name,
+        # popup = popup,
         fillColor = "blck",
         fillOpacity = 1,
         stroke = FALSE,
